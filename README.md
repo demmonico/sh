@@ -70,8 +70,8 @@ ssh-add -K ~/.ssh/id_rsa
 
 For successful clone disk you have to do following:
 - [Get disk's mount point](#get-disks-mount-point)
-- Unmount disk and drive (for USB)
-- Makes disk's image
+- [Unmount disk and drive (for USB)](#unmount-disk-and-drive-for-usb)
+- [Makes disk's image](#makes-disks-image)
 
 ##### Get disk's mount point
 
