@@ -69,7 +69,7 @@ ssh-add -K ~/.ssh/id_rsa
 ### Disks
 
 For successful clone disk you have to do following:
-- (Get disk's mount point)[#getdisksmountpoint]
+- (Get disk's mount point)[#get-disks-mount-point]
 - Unmount disk and drive (for USB)
 - Makes disk's image
 
@@ -88,7 +88,7 @@ diskutil unmountDisk /dev/disk1
 
 ##### Makes disk's image
 
-**WARNING!!! Be careful with drives names! Check before run!!!** , see (Get disk's mount point)[#getdisksmountpoint]
+**WARNING!!! Be careful with drives names! Check before run!!!** , see (Get disk's mount point)[#get-disks-mount-point]
 
 ```bash
 # direct clone disk
