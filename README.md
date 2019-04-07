@@ -25,6 +25,16 @@ awk -F'"po_description":"1 Gbps"' 'NF{print NF-1}' ~/enterprise.txt | awk '{sum+
 
 ```
 
+##### Find string occurrences in source folder
+
+During search skip "Permission denied" warnings
+
+```bash
+# source - root dir
+find / -type f -exec grep -il "needle" {} \; 2>&1 | grep -v "Permission denied"
+
+```
+
 
 
 ### Networks
