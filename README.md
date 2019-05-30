@@ -147,3 +147,12 @@ sudo find . -type f -exec sh -c "chflags -R nouchg" {} +
 
 ```
 
+
+
+### Docker
+
+##### Containers list sorted by name
+
+```bash
+docker ps --format "table {{.Names}}\t{{.ID}}\t{{.Status}}\t{{.Ports}}" | (read -r; printf "%s\n" "$REPLY"; sort -k 1 )
+```
