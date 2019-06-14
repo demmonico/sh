@@ -147,6 +147,11 @@ sudo find . -type f -exec sh -c "chflags -R nouchg" {} +
 
 ```
 
+##### Wrap ls results
+```bash
+ls | while read i; do echo \|$i\|yes\|yes\|; done
+```
+
 
 
 ### Docker
