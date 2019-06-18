@@ -39,18 +39,25 @@ find / -type f -exec grep -il "needle" {} \; 2>&1 | grep -v "Permission denied"
 
 ### Networks
 
+##### List local IPs
+
+```bash
+# including 127.0.0.1
+ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*'
+# without 127.0.0.1
+ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
+```
+
 ##### Connect via FTP
 
 ```bash
 ftp -4 192.168.0.101 2121
-
 ```
 
 ##### Check file exists via FTP
 
 ```bash
 wget -S --spider ftp://192.168.0.101:2121/DCIM/Camera/ 2>&1 | grep 'IMG_20181223_000048.jpg'
-
 ```
 
 ##### Send request via cUrl
@@ -64,7 +71,6 @@ curl -k -X POST --user username:secret https://website
 
 # get headers
 curl -k -I -X POST https://website
-
 ```
 
 ##### Re-read OpenSSH keys for PhpStorm
