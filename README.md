@@ -39,6 +39,12 @@ find / -type f -exec grep -il "needle" {} \; 2>&1 | grep -v "Permission denied"
 
 ### Networks
 
+##### List open ports
+
+```bash
+lsof -i
+```
+
 ##### List local IPs
 
 ```bash
