@@ -121,6 +121,15 @@ sudo dd if=/hdd/dstorage/win10.iso of=/dev/sdd bs=32M status=progress
 
 ### Files
 
+##### Work with ls
+```bash
+# wrap ls results
+ls | while read i; do echo \|$i\|yes\|yes\|; done
+ 
+# list only files
+ls -p | grep -v /
+```
+
 ##### Get file's meta info
 
 ```bash
@@ -145,11 +154,6 @@ chflags -R nouchg
 # all in current path
 sudo find . -type f -exec sh -c "chflags -R nouchg" {} +
 
-```
-
-##### Wrap ls results
-```bash
-ls | while read i; do echo \|$i\|yes\|yes\|; done
 ```
 
 
