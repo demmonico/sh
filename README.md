@@ -4,6 +4,17 @@ Collection of bash / sh / cli snippets and commands
 
 
 
+### Common bash
+
+##### Bash profile
+
+```bash
+# reload bashrc / bash_profile without logging out and back in
+exec bash -l
+```
+
+
+
 ### Strings
 
 ##### Work with Grep
