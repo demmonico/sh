@@ -67,7 +67,7 @@ if [[ -n "${BASH_VERSION}" ]] && [[ "$1" == "${PARAM_INSTALL_OPTION}" ]]; then
     FILE_BASH_PROFILE="${HOME_DIR}/${FILE_BASH_PROFILE}"
 
     autoRegisterer "${FILE_BASH_PROFILE}" "${ALIAS}"
-    echo "Auto-registeration at file '${FILE_BASH_PROFILE}' has been completed!"
+    echo "Auto-registration at file '${FILE_BASH_PROFILE}' has been completed!"
     echo "Don't forget to reload shell e.g. '. ${FILE_BASH_PROFILE}'"
 
     exec bash -l
