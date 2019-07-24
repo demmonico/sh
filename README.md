@@ -11,11 +11,19 @@ Collection of bash / sh / cli snippets and commands
 ```bash
 # reload bashrc / bash_profile without logging out and back in
 exec bash -l
+```
 
+###### Bash profile alias auto-registration
+
+```bash
 # automaticly register aliases to bashrc / bash_profile
-#######################################
+# this snippet could be added to any script to add auto-register alias functionality
 
-# Auto-registerer
+#################### Auto-registerer
+
+PARAM_INSTALL_OPTION="-i"
+SELF_SCRIPT_PATH="${BASH_SOURCE[0]}"
+SELF_SCRIPT_FILENAME=`basename "${SELF_SCRIPT_PATH}"`
 
 function autoRegisterer()
 {
@@ -42,7 +50,9 @@ EOT
     fi
 }
 
-if [[ -n "${BASH_VERSION}" ]] && [[ "$1" == "-i" ]]; then
+########## Main
+
+if [[ -n "${BASH_VERSION}" ]] && [[ "$1" == "${PARAM_INSTALL_OPTION}" ]]; then
     read -p "Pls, check you HOMEDIR [${HOME}]: " HOME_DIR
     HOME_DIR="${HOME_DIR:-"${HOME}"}"
     DEFAULT_ALIAS="${SELF_SCRIPT_FILENAME%.*}"
@@ -65,7 +75,7 @@ if [[ -n "${BASH_VERSION}" ]] && [[ "$1" == "-i" ]]; then
     exit 0;
 fi
 
-#######################################
+#################### Auto-registerer
 
 ```
 
