@@ -40,6 +40,11 @@ exec bash -l
 Automaticly register aliases to bashrc / bash_profile.
 This snippet could be added to any script to add auto-register alias functionality.
 
+Steps:
+- add snippet to your bash file
+- run via `./script.sh -i` and fill required data
+- reload terminal session and enjoy new alias
+
 ```bash
 #################### Auto-registerer
 
