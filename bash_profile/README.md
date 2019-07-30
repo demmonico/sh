@@ -105,3 +105,16 @@ fi
 #################### Auto-registerer
 
 ```
+
+
+
+### Create function or caller
+
+Use function or caller to run some dynamic scripts with params having some logic inside.
+Add follow to `bash_profile`
+
+```bash
+callerName() {
+echo "$1" "$2"
+}
+```
