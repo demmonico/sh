@@ -16,7 +16,26 @@ exec bash -l
 
 ### Aliases
 
-##### Self-register snippet
+#### Aliaser
+
+[Tool](aliaser.sh) helps add / remove alias to bash_profile file
+
+```bash
+./aliaser.sh [<no_flags>|-a|--add|-r|--remove|-h|--help] <full_script_path_to_target_file>
+```
+
+```bash
+# add alias
+./aliaser.sh [<no_flags>|-a|--add] <full_script_path_to_target_file>
+# remove alias
+./aliaser.sh [-r|--remove] <full_script_path_to_target_file>
+# help
+./aliaser.sh [-h|--help]
+```
+
+
+
+#### Self-register snippet
 
 Automaticly register aliases to bashrc / bash_profile.
 This snippet could be added to any script to add auto-register alias functionality.
@@ -80,17 +99,4 @@ fi
 
 #################### Auto-registerer
 
-```
-
-
-
-##### Aliaser
-
-Tool helps add / remove alias to bash_profile file
-
-```bash
-# add alias
-./aliaser.sh [<no_flags>|-a|--add] <full_script_path_to_target_file>
-# remove alias
-./aliaser.sh [-r|--remove] <full_script_path_to_target_file>
 ```
