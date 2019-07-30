@@ -1,4 +1,4 @@
-# Collection of snippets, commands and tools working with bash_profile
+# Collection working with bash_profile
 
 Collection of bash / sh / cli snippets, commands and tools working with bash_profile
 
