@@ -24,14 +24,26 @@ exec bash -l
 ./aliaser.sh [<no_flags>|-a|--add|-r|--remove|-h|--help] <full_script_path_to_target_file>
 ```
 
+###### Help
+
 ```bash
-# add alias
-./aliaser.sh [<no_flags>|-a|--add] <full_script_path_to_target_file>
-# remove alias
-./aliaser.sh [-r|--remove] <full_script_path_to_target_file>
-# help
 ./aliaser.sh [-h|--help]
 ```
+![](docs/aliaser-help.gif)
+
+###### Add
+
+```bash
+./aliaser.sh [<no_flags>|-a|--add] <full_script_path_to_target_file>
+```
+![](docs/aliaser-add.gif)
+
+###### Remove
+
+```bash
+./aliaser.sh [-r|--remove] <full_script_path_to_target_file>
+```
+![](docs/aliaser-remove.gif)
 
 
 
