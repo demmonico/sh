@@ -4,7 +4,13 @@ Collection of bash / sh / cli snippets, commands and tools working with bash_pro
 
 
 
-### Reload profile
+### Manage BASH profile
+
+Get user's profile folder
+
+```bash
+PROFILE_DIR="$( eval echo ~$USER )"
+```
 
 Reload bashrc / bash_profile without logging out and back in
 
