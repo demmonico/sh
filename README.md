@@ -6,6 +6,11 @@ Collection of bash / sh / cli snippets, commands and tools
 
 ### Common bash
 
+Return to one line up in terminal
+```bash
+printf '\e[A\e[K'
+```
+
 ##### Bash profile
 
 [Follow to separate file](bash_profile/README.md)
