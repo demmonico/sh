@@ -20,6 +20,17 @@ exec bash -l
 
 
 
+### BASH profile helper
+
+Helper used to color terminal promt, put some info etc
+
+##### Usage
+
+- put [this file](bash_profile_helper.sh) near with your .bashrc or .bash_profile file
+- add to the last one following line: `source ./.bash_profile_helper.sh`
+
+
+
 ### Aliases
 
 #### Aliaser
