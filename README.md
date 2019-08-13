@@ -50,6 +50,38 @@ find / -type f -exec grep -il "needle" {} \; 2>&1 | grep -v "Permission denied"
 
 
 
+### System
+
+##### RAM info
+
+```bash
+/usr/bin/vm_stat | sed 's/\.//' | awk '
+            /page size of/ {BLOCK_SIZE = $8}
+            /free/ {FREE_BLOCKS = $3}
+            /Pages active/ {ACTIVE_BLOCKS = $3}
+            /Pages inactive/ {INACTIVE_BLOCKS = $3}
+            /speculative/ {SPECULATIVE_BLOCKS = $3}
+            /wired/ {WIRED_BLOCKS = $4}
+            /purgeable/ {PURGEABLE_BLOCKS = $3}
+            /occupied by compressor/ {COMPRESSED_BLOCKS = $5}
+            /backed/ {CACHED_FILES_BLOCKS = $3}
+            /throttled/ {THROTTLED_BLOCKS = $3}
+            /Swapouts/ {SWAPOUTS_BLOCKS = $2}
+            END {
+                WIRED=(( WIRED_BLOCKS * BLOCK_SIZE / 1024 / 1024 ))
+                COMPRESSED=(( COMPRESSED_BLOCKS * BLOCK_SIZE / 1024 / 1024 ))
+                APP=(( (ACTIVE_BLOCKS + INACTIVE_BLOCKS + SPECULATIVE_BLOCKS + THROTTLED_BLOCKS + PURGEABLE_BLOCKS) * BLOCK_SIZE / 1024 / 1024 - WIRED ))
+                USED=(( APP + WIRED + COMPRESSED ))
+                CACHED_FILES=(( (CACHED_FILES_BLOCKS + PURGEABLE_BLOCKS) * BLOCK_SIZE / 1024 / 1024 ))
+                SWAP=(( SWAPOUTS_BLOCKS * BLOCK_SIZE / 1024 / 1024 ))
+                FREE=(( FREE_BLOCKS * BLOCK_SIZE / 1024 / 1024 ))
+                INACTIVE=(( INACTIVE_BLOCKS * BLOCK_SIZE / 1024 / 1024 ))
+                printf "Free RAM %.1fG of %.1fG (page size %.1fK)\n", (( (FREE + INACTIVE) / 1024 )), (( (USED + CACHED_FILES + SWAP + FREE) / 1024 )), (( BLOCK_SIZE / 1024 ))
+            }'
+```
+
+
+
 ### Networks
 
 ##### List open ports
