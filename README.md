@@ -127,11 +127,11 @@ fi
 <details><summary>Disk info</summary>
 <pre><code>
 if [[ "$OSTYPE" == "darwin"* ]]; then
-        INFO=''
-        DISCS=($( df -h | grep '/dev/disk' | sort -u -n -k2 | awk '{print $1}' ))
-        for DISC in "${DISCS[@]}"; do
-            [[ -n "${INFO}" ]] && INFO+=' | '
-            INFO+="$( diskutil info ${DISC} | awk '
+    INFO=''
+    DISCS=($( df -h | grep '/dev/disk' | sort -u -n -k2 | awk '{print $1}' ))
+    for DISC in "${DISCS[@]}"; do
+        [[ -n "${INFO}" ]] && INFO+=' | '
+        INFO+="$( diskutil info ${DISC} | awk '
             /Device Identifier/ {ID = $3}
             /Volume Name/ {VOLUME = substr($0, index($0,$3))}
             /File System Personality/ {FSTYPE = substr($0, index($0,$4))}
@@ -140,8 +140,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             END {
                 printf "%s (%s), %s, free %.1f/%.1fG (%.1f%%)", VOLUME, ID, FSTYPE, (( FREE / 1024 / 1024 / 1024 )), (( TOTAL / 1024 / 1024 / 1024 )), (( FREE / TOTAL * 100 ))
             }' )"
-        done
-        echo ">>> ${INFO:-No /dev/disk* devices was found}"
+    done
+    echo ">>> ${INFO:-No /dev/disk* devices was found}"
 fi
  
 \# TODO add other OS
