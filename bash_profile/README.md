@@ -26,7 +26,12 @@ Helper used to color terminal promt, put some info etc
 
 ##### Usage
 
-- put [this file](bash_profile_helper.sh) near with your .bashrc or .bash_profile file
+- download [bash profile helper](bash_profile_helper.sh) e.g. using command
+  ```bash
+  curl -LJ -o ~/.bash_profile_helper.sh https://raw.githubusercontent.com/demmonico/bash-goodies/master/bash_profile/bash_profile_helper.sh
+  ```
+  **Note** it recommended to use dot in the begin of file name to make it hidden
+- put [bash profile helper](bash_profile_helper.sh) near with your .bashrc or .bash_profile file
 - add to the last one following line: `source ./.bash_profile_helper.sh`
 
 
