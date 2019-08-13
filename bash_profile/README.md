@@ -30,6 +30,8 @@ exec bash -l
 ./aliaser.sh [<no_flags>|-a|--add|-r|--remove|-h|--help] <full_script_path_to_target_file>
 ```
 
+<details><summary>More info</summary>
+
 ###### Help
 
 ```bash
@@ -50,6 +52,7 @@ exec bash -l
 ./aliaser.sh [-r|--remove] <full_script_path_to_target_file>
 ```
 ![](docs/aliaser-remove.gif)
+</details>
 
 
 
@@ -63,8 +66,10 @@ Steps:
 - run via `./script.sh -i` and fill required data
 - reload terminal session and enjoy new alias
 
-```bash
-#################### Auto-registerer
+<details><summary>Code</summary>
+<pre><code>
+
+\#################### Auto-registerer
 
 PARAM_INSTALL_OPTION="-i"
 SELF_SCRIPT_PATH="${BASH_SOURCE[0]}"
@@ -95,7 +100,7 @@ EOT
     fi
 }
 
-########## Main
+\########## Main
 
 if [[ -n "${BASH_VERSION}" ]] && [[ "$1" == "${PARAM_INSTALL_OPTION}" ]]; then
     read -p "Pls, check you HOMEDIR [${HOME}]: " HOME_DIR
@@ -120,9 +125,9 @@ if [[ -n "${BASH_VERSION}" ]] && [[ "$1" == "${PARAM_INSTALL_OPTION}" ]]; then
     exit 0;
 fi
 
-#################### Auto-registerer
-
-```
+\#################### Auto-registerer
+</code></pre>
+</details>
 
 
 
