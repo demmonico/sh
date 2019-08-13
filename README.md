@@ -52,9 +52,46 @@ find / -type f -exec grep -il "needle" {} \; 2>&1 | grep -v "Permission denied"
 
 ### System
 
-##### RAM info
+##### Get different types of system info
 
-```bash
+<details><summary>System info</summary>
+<pre><code>
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    system_profiler SPHardwareDataType | awk '
+            /Model Identifier/ {MODEL = $3}
+            /Serial Number/ {SN = $4}
+            /Hardware UUID/ {UUID = $3}
+            END {
+                printf ">>> Model %s, UUID %s, SN %s\n", MODEL, UUID, SN
+            }'
+fi
+ 
+\# TODO add other OS
+</code></pre>
+</details>
+
+
+
+<details><summary>CPU info</summary>
+<pre><code>
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    system_profiler SPHardwareDataType | awk '
+            /Processor Name/ {NAME = substr($0, index($0,$3))}
+            /Total Number of Cores/ {CORES = $5}
+            /Processor Speed/ {FREQ = substr($0, index($0,$3))}
+            END {
+                printf ">>> CPU %s %sx%s\n", NAME, CORES, FREQ
+            }'
+fi
+ 
+\# TODO add other OS
+</code></pre>
+</details>
+
+
+
+<details><summary>RAM info</summary>
+<pre><code>
 if [[ "$OSTYPE" == "darwin"* ]]; then
     /usr/bin/vm_stat | sed 's/\.//' | awk '
         /page size of/ {BLOCK_SIZE = $8}
@@ -80,9 +117,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             printf "Free RAM %.1fG of %.1fG (page size %.1fK)\n", (( (FREE + INACTIVE) / 1024 )), (( (USED + CACHED_FILES + SWAP + FREE) / 1024 )), (( BLOCK_SIZE / 1024 ))
         }'
 fi
-
-# TODO add other OS
-```
+ 
+\# TODO add other OS
+</code></pre>
+</details>
 
 
 
