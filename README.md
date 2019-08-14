@@ -246,6 +246,29 @@ sudo dd if=/hdd/dstorage/win10.iso of=/dev/sdd bs=32M status=progress
 
 ### Files
 
+##### Pack / Unpack
+
+Pack
+```bash
+# pack file/dir
+tar -czvf name-of-archive.tar.gz /path/to/directory-or-file
+ 
+# pack multiple sources
+tar -czvf archive.tar.gz /home/ubuntu/Downloads /usr/local/stuff
+ 
+# pack with exclude
+tar -czvf archive.tar.gz /home/ubuntu --exclude=*.mp4
+```
+
+Unpack
+```bash
+# unpack file/dir
+tar -xzvf archive.tar.gz
+ 
+# unpack to the target folder
+tar -xzvf archive.tar.gz -C /tmp
+```
+
 ##### Work with ls
 ```bash
 # wrap ls results
