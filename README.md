@@ -289,8 +289,11 @@ exiv2 pr IMG_20181223_000048.jpg | grep -oP 'Image timestamp : \K([0-9: ]+)'
 ##### Update file's date
 
 ```bash
+# modified date + creation only if it earlier then current
 touch -t 201812010000 IMG_20181223_000048.jpg
-
+ 
+# both
+SetFile -d "07/15/2019 12:00 PM" -m "07/15/2019 12:00 PM" YDXJ0121.jpg 
 ```
 
 ##### Unlock file changes
