@@ -32,7 +32,7 @@ Helper used to color terminal promt, put some info etc
   ```
   **Note** it recommended to use dot in the begin of file name to make it hidden
 - put [bash profile helper](bash_profile_helper.sh) near with your .bashrc or .bash_profile file
-- add to the last one following line: `source ./.bash_profile_helper.sh`
+- add to the last one following line: `source ~/.bash_profile_helper.sh`
 
 
 
