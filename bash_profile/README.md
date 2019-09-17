@@ -46,6 +46,12 @@ Helper used to color terminal promt, put some info etc
 ./aliaser.sh [<no_flags>|-a|--add|-r|--remove|-h|--help] <full_script_path_to_target_file>
 ```
 
+Download using
+
+```bash
+curl -LJ -o ~/aliaser.sh https://raw.githubusercontent.com/demmonico/bash-goodies/master/bash_profile/aliaser.sh
+```
+
 <details><summary>More info</summary>
 
 ###### Help
