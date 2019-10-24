@@ -99,7 +99,7 @@ printStatMemory() {
                 SWAP=(( SWAPOUTS_BLOCKS * BLOCK_SIZE / 1024 / 1024 ))
                 FREE=(( FREE_BLOCKS * BLOCK_SIZE / 1024 / 1024 ))
                 INACTIVE=(( INACTIVE_BLOCKS * BLOCK_SIZE / 1024 / 1024 ))
-                printf ">>> Free RAM %.1fG of %.1fG (page size %.1fK)\n", (( (FREE + INACTIVE) / 1024 )), (( (USED + CACHED_FILES + SWAP + FREE) / 1024 )), (( BLOCK_SIZE / 1024 ))
+                printf ">>> Free RAM %.1fG of %.1fG (page size %.1fK, swap %.1fG)\n", (( (FREE + INACTIVE) / 1024 )), (( (USED + CACHED_FILES + FREE) / 1024 )), (( BLOCK_SIZE / 1024 )), (( SWAP / 1024 ))
             }'
     fi
 
