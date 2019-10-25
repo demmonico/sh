@@ -167,6 +167,16 @@ ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}
 ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
 ```
 
+##### Get public IP via CLI
+
+```bash
+dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
+# or
+dig +short myip.opendns.com @resolver1.opendns.com
+```
+
+**Note** to install `dig` on Alpine run `apk add --update bind-tools`
+
 ##### Connect via FTP
 
 ```bash
