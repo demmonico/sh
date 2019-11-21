@@ -92,6 +92,10 @@ fi
 
 <details><summary>RAM info</summary>
 <pre><code>
+\# Ubuntu
+awk '/MemFree/ { printf "%.3f GiB\n", $2/1024/1024 }' /proc/meminfo
+
+\# bash_profile MacOS
 if [[ "$OSTYPE" == "darwin"* ]]; then
     /usr/bin/vm_stat | sed 's/\.//' | awk '
         /page size of/ {BLOCK_SIZE = $8}
