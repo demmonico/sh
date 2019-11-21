@@ -15,6 +15,12 @@ printf '\e[A\e[K'
 
 [Follow to separate file](bash_profile/README.md)
 
+##### Watching dashboard
+
+```bash
+watch -n10 -d 'tail -n 100 /var/log/syslog | grep voucher && printf "%s\n" -------------------- && ps -aux | grep -v grep | grep -E "(PID|voucher)" && printf "%s\n" -------------------- && tail -n 10 /tmp/test_cms.log /tmp/test_cms_update.log'
+```
+
 
 
 ### Strings
@@ -260,6 +266,15 @@ sudo dd if=/hdd/dstorage/win10.iso of=/dev/sdd bs=32M status=progress
 
 
 ### Files
+
+##### Open multiple files
+
+```bash
+tail -n 10 /tmp/test_cms.log /tmp/test_cms_update.log'
+
+# or to fetch all content
+`tail -n +1 /tmp/test_cms.log /tmp/test_cms_update.log'` 
+```
 
 ##### Pack / Unpack
 
