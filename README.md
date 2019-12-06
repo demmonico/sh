@@ -18,6 +18,13 @@ printf '\e[A\e[K'
 ##### Watching dashboard
 
 ```bash
+# ps filtering cron processes
+watch -n 1 ' ps faux | grep -E "(cron|PID)" | grep -v grep | tail -n $(($LINES - 3))'
+ 
+# ps filtering cron processes with count lines
+watch -n 1 'ps faux | grep -E "(cron|PID)" | grep -v grep | tail -n $(($LINES - 3)) | awk "{ print } END { print NR - 1 }"'
+ 
+# combine ps and tail
 watch -n10 -d 'tail -n 100 /var/log/syslog | grep voucher && printf "%s\n" -------------------- && ps -aux | grep -v grep | grep -E "(PID|voucher)" && printf "%s\n" -------------------- && tail -n 10 /tmp/test_cms.log /tmp/test_cms_update.log'
 ```
 
