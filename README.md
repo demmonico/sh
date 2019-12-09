@@ -227,6 +227,21 @@ ssh-add -K ~/.ssh/id_rsa
 
 ```
 
+##### Looking the pts list
+
+```bash
+who
+# root     pts/3        2019-12-06 13:45 (10.84.69.203)
+
+```
+
+##### Send message to pts
+
+```bash
+write root pts/3
+
+```
+
 
 
 ### Disks
