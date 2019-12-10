@@ -328,6 +328,9 @@ ls | while read i; do echo \|$i\|yes\|yes\|; done
  
 # list only files
 ls -p | grep -v /
+ 
+# list all files in DIR
+find . -type f -exec ls --block-size=M -nls {} + | sort -k 10
 ```
 
 ##### Get file's meta info
