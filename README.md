@@ -289,6 +289,12 @@ sudo dd if=/hdd/dstorage/win10.iso of=/dev/sdd bs=32M status=progress
 
 ### Files
 
+##### Normalize file path
+
+```bash
+FILE_CONFIG="$( name="$( basename "$2" )"; dir="$( cd "$( dirname "$2" )" && pwd )"; echo "${dir}/${name}" )"
+```
+
 ##### Open multiple files
 
 ```bash
