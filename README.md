@@ -61,6 +61,16 @@ find / -type f -exec grep -il "needle" {} \; 2>&1 | grep -v "Permission denied"
 
 ```
 
+##### Fetch config key-value from YAML file
+
+```bash
+// fetch
+sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g;s/""/"/g' ${FILE_CONFIG}
+ 
+// export fetched as key=value
+export $( sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g;s/""/"/g' ${FILE_CONFIG} | xargs )
+```
+
 
 
 ### System
