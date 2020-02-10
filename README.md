@@ -17,7 +17,7 @@ printf '\e[A\e[K'
 
 ##### Watching dashboard
 
-```bash
+```shell script
 # ps filtering cron processes
 watch -n 1 ' ps faux | grep -E "(cron|PID)" | grep -v grep | tail -n $(($LINES - 3))'
  
