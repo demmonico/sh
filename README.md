@@ -387,11 +387,3 @@ sudo find . -type f -exec sh -c "chflags -R nouchg" {} +
 ```bash
 docker ps --format "table {{.Names}}\t{{.ID}}\t{{.Status}}\t{{.Ports}}" | (read -r; printf "%s\n" "$REPLY"; sort -k 1 )
 ```
-
-
-
-### Git
-
-##### Clone repositories
-
-[Follow to separate file](git_cloner/README.md)
