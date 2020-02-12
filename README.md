@@ -295,6 +295,14 @@ sudo dd if=/hdd/dstorage/win10.iso of=/dev/sdd bs=32M status=progress
 
 ```
 
+##### Get disk free space
+
+Get disk free space by each of mount points
+
+```bash
+df -h
+```
+
 
 
 ### Files
