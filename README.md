@@ -395,3 +395,9 @@ sudo find . -type f -exec sh -c "chflags -R nouchg" {} +
 ```bash
 docker ps --format "table {{.Names}}\t{{.ID}}\t{{.Status}}\t{{.Ports}}" | (read -r; printf "%s\n" "$REPLY"; sort -k 1 )
 ```
+
+##### Measure build time
+
+```bash
+TIMEFORMAT='%R sec'; time { docker build --target prod -f docker/php-fpm/Dockerfile -t testsize-php-0:prod . > /dev/null ; }
+```
