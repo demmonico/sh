@@ -396,6 +396,13 @@ sudo find . -type f -exec sh -c "chflags -R nouchg" {} +
 docker ps --format "table {{.Names}}\t{{.ID}}\t{{.Status}}\t{{.Ports}}" | (read -r; printf "%s\n" "$REPLY"; sort -k 1 )
 ```
 
+##### Generate Dockerfile by Docker image
+
+```bash
+alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage"
+dfimage -sV=1.36 docker.elastic.co/beats/filebeat:7.5.1
+```
+
 ##### Measure build time
 
 ```bash
