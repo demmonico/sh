@@ -2,7 +2,7 @@
 #
 # Bash profile helper
 #
-# @author demmonico <demmonico@gmail.com> <https://github.com/demmonico>
+# @author: demmonico <demmonico@gmail.com> <https://github.com/demmonico>
 #
 # @use
 # - put this file near with your .bashrc or .bash_profile file

@@ -2,7 +2,7 @@
 #
 # Script adds/removes aliases to bash profile file
 #
-# @author demmonico <demmonico@gmail.com> <https://github.com/demmonico>
+# @author: demmonico <demmonico@gmail.com> <https://github.com/demmonico>
 #
 # ./aliaser.sh [-a|--add|-r|--remove|-h|--help] <full_script_path_to_target_file>
 # @examples
