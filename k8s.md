@@ -15,6 +15,18 @@ Collection of Kubernetes- and Helm-related snippets, commands and tools
 kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n NAMESPACE
 ```
 
+##### List all container images in namespace
+
+```shell script
+kubectl get pods -o jsonpath="{.items[*].spec.containers[*].image}" -n NAMESPACE | tr ' ' "\n" && echo ''
+ 
+# group by images
+kubectl get pods -n NAMESPACE -o jsonpath="{..image}" | tr -s '[[:space:]]' '\n' | sort | uniq -c
+ 
+# group by pod
+kubectl get pods -n NAMESPACE -o=jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{", "}{end}{end}' | sort
+```
+
 ##### Run command at the first found pod container filtered by selector
 
 ```shell script
