@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #-----------------------------------------------------------#
-# Init new web-site under Apache /var/www
+# Init new virtual host under Apache web-server /var/www
 #
 # @author: demmonico <demmonico@gmail.com> <https://github.com/demmonico>
 # @date: 16 Aug 2016

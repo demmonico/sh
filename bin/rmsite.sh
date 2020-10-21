@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #-----------------------------------------------------------#
-# Remove web-site from Apache /var/www
+# Remove virtual host from Apache web-server /var/www
 #
 # @author: demmonico <demmonico@gmail.com> <https://github.com/demmonico>
 # @date: 16 Aug 2016

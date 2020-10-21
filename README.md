@@ -14,9 +14,9 @@ Collection of bash / sh / cli snippets, commands and tools
 [Bash scripts](bin):
 
 - [Script installer docker onto AWS EC2 instances](bin/aws_deploy_cmd.sh)
-- [Generate PO translation files](bin/generate_test_sources.sh)
-- [Init new web-site under Apache](bin/newsite.sh)
-- [Remove web-site from Apache](bin/rmsite.sh)
+- [generate_test_sources](bin/generate_test_sources.sh) and [generate_sources](bin/generate_sources.sh) parses php source files for using gettext wrappers and generates related gettext source PO and MO files
+- [Init new virtual host under Apache web-server](bin/newsite.sh)
+- [Remove virtual host from Apache web-server](bin/rmsite.sh)
 
 [Bash profile scripts](bash_profile/README.md)
 
