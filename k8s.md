@@ -6,8 +6,8 @@ Collection of Kubernetes- and Helm-related snippets, commands and tools
 
 ### K8s
 
-[Bash profile k8s helper](bin-k8s/bash_profile_k8s_helper.sh)
-[Get Helm script](bin-k8s/get_helm.sh)
+[Bash profile k8s helper](bin_k8s/bash_profile_k8s_helper.sh)
+[Get Helm script](bin_k8s/get_helm.sh)
 
 ##### List all k8s resources in namespace
 

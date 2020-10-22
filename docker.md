@@ -1,6 +1,6 @@
 # Docker collection
 
-Collection of docker-related snippets, commands and tools
+Collection of docker-related snippets, commands and [example of Dockerfile optimization](dockerfile_optimization/README.md)
 
 
 
