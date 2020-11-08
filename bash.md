@@ -253,6 +253,15 @@ ssh-add -K ~/.ssh/id_rsa
 
 ```
 
+##### Generate self-signed SSL certificate
+
+```shell script
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
+ 
+# non-verbosy w/o password phrase and for localhost
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes -subj '/CN=localhost'
+```
+
 ##### Looking the pts list
 
 ```shell script
