@@ -246,6 +246,35 @@ curl -k -X POST --user username:secret https://website
 curl -k -I -X POST https://website
 ```
 
+##### Check which TLS version website supports
+```shell script
+curl -I --tls-max 1.1 https://website
+# 
+# if response is 
+# curl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to
+# then TLS version less or equal to 1.1 is rejected (but we still don't know about higher, e.g. TLSv1.2)
+#
+# if response is
+# HTTP/2 200
+# then TLS version started with 1.1 is supported (but we still don't know about lower, e.g. TLSv1.0)
+ 
+# so to validate that you should consequencely check
+curl -I --tls-max 1.0 https://website
+curl -I --tls-max 1.1 https://website
+curl -I --tls-max 1.2 https://website
+```
+
+##### Check which HTTP version website supports
+```shell script
+curl -sI https://website -o/dev/null -w '%{http_version}\n'
+# response is '2' or '1.1'
+# e.g.
+curl -sI https://curl.haxx.se -o/dev/null -w '%{http_version}\n'
+# 2
+curl -sI http://curl.haxx.se -o/dev/null -w '%{http_version}\n'
+# 1.1
+```
+
 ##### Re-read OpenSSH keys for PhpStorm
 
 ```shell script
