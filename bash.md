@@ -351,10 +351,23 @@ sudo dd if=/hdd/dstorage/win10.iso of=/dev/sdd bs=32M status=progress
 
 ##### Get disk free space
 
+Get disk mount points + free space
+
+```shell script
+lsblk
+```
+
 Get disk free space by each of mount points
 
 ```shell script
 df -h
+```
+
+Get disk free space for particular folder
+
+```shell script
+df -h /builds
+df -h /var/lib/docker
 ```
 
 
