@@ -67,16 +67,6 @@ awk -F'"po_description":"1 Gbps"' 'NF{print NF-1}' ~/enterprise.txt | awk '{sum+
 
 ```
 
-##### Find string occurrences in source folder
-
-During search skip "Permission denied" warnings
-
-```shell script
-# source - root dir
-find / -type f -exec grep -il "needle" {} \; 2>&1 | grep -v "Permission denied"
-
-```
-
 ##### Fetch config key-value from YAML file
 
 ```shell script
@@ -439,6 +429,16 @@ tail -n 10 /tmp/test_cms.log /tmp/test_cms_update.log'
 
 # or to fetch all content
 `tail -n +1 /tmp/test_cms.log /tmp/test_cms_update.log'` 
+```
+
+##### Find string occurrences in source folder
+
+During search skip "Permission denied" warnings
+
+```shell script
+# source - root dir
+find / -type f -exec grep -il "needle" {} \; 2>&1 | grep -v "Permission denied"
+
 ```
 
 ##### Pack / Unpack
