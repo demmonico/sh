@@ -87,6 +87,58 @@ sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g;s/""/"/g' ${FILE_CONFIG}
 export $( sed -e 's/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g;s/""/"/g' ${FILE_CONFIG} | xargs )
 ```
 
+##### Show lines between selected
+
+```shell script
+$ cat file.txt
+line 1
+line 2
+...
+line 49
+line 50
+ 
+$ cat file.txt | awk '/line 1/{f=1;next} /line 50/{f=0} f'
+line 2
+...
+line 49
+```
+
+##### Mask all secrets at the K8s secrets template
+
+```shell script
+// using select between lines
+eval "${HELM_UPGRADE_CMD}" | awk '/type: "Opaque"/{f=1;next} /---/{f=0} f' | grep '^\s' | sed -E "s/([A-Za-z0-9_]+):\s[^,]+([',])/\1: <MASKED_SECRET>\2/g"
+ 
+// using line-by-line processing
+function maskSecretsAtLine() {
+  local line="$1"
+  local SEPARATOR=':[[:space:]]*'
+
+  while IFS= read -r secret; do
+    pattern="^[[:space:]]+${secret}:[[:space:]]+"
+    if [[ "$line" =~ $pattern ]]; then
+      line="$( echo "$line" | sed "s/\(^[[:space:]]*${secret}${SEPARATOR}\).*$/\1<MASKED_SECRET>/" )"
+    fi
+  done <<< "${SECRETS_LIST}"
+
+  echo "$line"
+}
+helm upgrade ... | while IFS= read -r line; do maskSecretsAtLine "$line"; done
+```
+
+##### Mask all secrets from string
+
+```shell script
+// string like Helm's --set-string argument ('SECRET=secret value,SECRET2=Another value')
+function maskSecrets() {
+  local SEPARATOR='='
+  # secrets SHOULD NOT contain single quotes (')
+  echo "$1" | sed -E "s/([A-Za-z0-9_]+)${SEPARATOR}[^,]+([',])/\1${SEPARATOR}<MASKED_SECRET>\2/g"
+}
+
+echo "$( maskSecrets HELM_UPGRADE_CMD )"
+```
+
 
 
 ### System
