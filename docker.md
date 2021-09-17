@@ -16,6 +16,12 @@ docker run -it -v $(pwd):/app deployer.azurecr.io/helm-lux:staging
 docker ps --format "table {{.Names}}\t{{.ID}}\t{{.Status}}\t{{.Ports}}" | (read -r; printf "%s\n" "$REPLY"; sort -k 1 )
 ```
 
+##### Containers list within their Name, Image and IP address
+
+```shell script
+docker inspect -f '{{.Name}} - {{.Config.Hostname}} - {{.Config.Image}} - {{.NetworkSettings.IPAddress }}' $(docker ps -q)
+```
+
 ##### Generate Dockerfile by Docker image
 
 ```shell script
