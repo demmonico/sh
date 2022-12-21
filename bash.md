@@ -502,5 +502,12 @@ chflags -R nouchg
 
 # all in current path
 sudo find . -type f -exec sh -c "chflags -R nouchg" {} +
+```
 
+##### Sort file in-place
+```shell script
+sort -o file file
+
+# Without repeating the filename
+sort -o file{,}
 ```
