@@ -399,17 +399,23 @@ Get disk mount points + free space
 lsblk
 ```
 
-Get disk free space by each of mount points
+Get the disk's free space by each of the mount points
 
 ```shell script
 df -h
 ```
 
-Get disk free space for particular folder
+Get the disk's free space for the particular folder
 
 ```shell script
 df -h /builds
 df -h /var/lib/docker
+```
+
+List the folders having more than 1Gb of the used disk space
+
+```shell
+du -h / 2>/dev/null | grep '^[0-9]\+G' | sort -n -r
 ```
 
 
