@@ -333,6 +333,25 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes -subj '/CN=localhost'
 ```
 
+##### Get the Serial Number of the SSL certificate for the list of webpages
+
+```shell script
+for domain in \
+  'domain1' \
+  'domain2' \
+  '...' \
+; do
+  echo -n | \
+  openssl s_client -connect ${domain}:443 2>/dev/null | \
+  openssl x509 -noout -text 2>/dev/null | \
+  grep -A 1 'Serial Number' | grep -v 'Serial Number' | \
+  awk -v domain="${domain}" '{print domain $0}'; \
+done | column -t
+
+# optionally add for highlighting
+... | grep --color -E '^|:pattern1|:pattern2'
+```
+
 ##### Looking the pts list
 
 ```shell script
