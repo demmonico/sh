@@ -288,7 +288,7 @@ curl -k -X POST --user username:secret https://website
 curl -k -I -X POST https://website
 ```
 
-##### Check which TLS version website supports
+##### Check which TLS version the website supports
 ```shell script
 curl -I --tls-max 1.1 https://website
 # 
@@ -306,7 +306,7 @@ curl -I --tls-max 1.1 https://website
 curl -I --tls-max 1.2 https://website
 ```
 
-##### Check which HTTP version website supports
+##### Check which HTTP version the website supports
 ```shell script
 curl -sI https://website -o/dev/null -w '%{http_version}\n'
 # response is '2' or '1.1'
@@ -324,7 +324,7 @@ ssh-add -K ~/.ssh/id_rsa
 
 ```
 
-##### Generate self-signed SSL certificate
+##### Generate a self-signed SSL certificate
 
 ```shell script
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
@@ -352,7 +352,7 @@ done | column -t
 ... | grep --color -E '^|:pattern1|:pattern2'
 ```
 
-##### Looking the pts list
+##### Looking at the pts list
 
 ```shell script
 who
@@ -371,12 +371,12 @@ write root pts/3
 
 ### Disks
 
-For successful clone disk you have to do following:
+For a successful clone disk, you have to do the following:
 - [Get disk's mount point](#get-disks-mount-point)
 - [Unmount disk and drive (for USB)](#unmount-disk-and-drive-for-usb)
 - [Makes disk's image](#makes-disks-image)
 
-##### Get disk's mount point
+##### Get the disk's mount point
 
 ```shell script
 diskutil list
@@ -397,12 +397,12 @@ diskutil unmountDisk /dev/disk1
 # direct clone disk
 sudo dd if=/dev/sdd of=/dev/sdc
 
-# simple creates and restore image
+# simple creates and restores image
 sudo dd if=/dev/sdd of=/hdd/dmini/_install/win10/win10.iso
 sudo dd if=/hdd/dmini/_install/win10/win10.iso of=/dev/sdc
 
 
-# creates and restore compressed image with progress
+# creates and restores compressed images with progress
 # WARNING doesn't work on MacOS
 # WARNING could be wrong shown disk size
 sudo dd if=/dev/sdc bs=32M status=progress | gzip > /hdd/dstorage/win10.iso
@@ -456,14 +456,37 @@ tail -n 10 /tmp/test_cms.log /tmp/test_cms_update.log'
 `tail -n +1 /tmp/test_cms.log /tmp/test_cms_update.log'` 
 ```
 
-##### Find string occurrences in source folder
+##### Find string occurrences in the source folder
 
-During search skip "Permission denied" warnings
+During the search skip "Permission denied" warnings
 
 ```shell script
 # source - root dir
 find / -type f -exec grep -il "needle" {} \; 2>&1 | grep -v "Permission denied"
 
+```
+
+##### Clean hidden files, auto-created by MacOS for media
+
+Find all extensions recursively in the path
+
+```shell script
+find . -type f -exec sh -c 'echo $1 | sed "s/^.*\.//"' sh {} \; | sort | uniq
+```
+
+Find hidden files, auto-created by MacOS for media
+
+```shell script
+# find all
+find . -type f -name '\._*' -print 2>/dev/null
+# find filtering by extension
+find . -type f -name '\._*.mp3' -print 2>/dev/null
+```
+
+Remove hidden files, auto-created by MacOS for media
+
+```shell script
+find . -type f -name '\._*' -exec rm -f {} \;
 ```
 
 ##### Pack / Unpack
