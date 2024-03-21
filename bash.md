@@ -431,6 +431,16 @@ df -h /builds
 df -h /var/lib/docker
 ```
 
+Get the disk's space for the particular folder (summarized with subfolders)
+
+```shell script
+# for single folder
+du -sh /folder_name
+
+# for all folders at the current one
+find . -mindepth 1 -maxdepth 1 -type d -exec du -sh {} \;
+```
+
 List the folders having more than 1Gb of the used disk space
 
 ```shell
