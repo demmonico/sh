@@ -10,6 +10,7 @@ Collection of bash / sh / cli snippets, commands and tools
 - [Networks](bash.md#networks)
 - [Disks](bash.md#disks)
 - [Files](bash.md#files)
+- [Stress-test](bash.md#stress)
 
 [Bash scripts](bin):
 
