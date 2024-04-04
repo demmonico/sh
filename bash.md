@@ -569,3 +569,20 @@ sort -o file file
 # Without repeating the filename
 sort -o file{,}
 ```
+
+
+
+### Stress
+
+##### Emulate a certain CPU/memory load
+
+```shell script
+sudo apt install stress-ng
+stress-ng -c 2 -v --vm-bytes $(awk '/MemAvailable/{printf "%d\n", $2 * 0.85;}' < /proc/meminfo)k --vm-keep -m 1 --timeout 300s
+```
+
+##### Emulate a certain Disk load
+
+```shell script
+fallocate -l 15G temp_file
+```
