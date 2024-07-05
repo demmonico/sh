@@ -42,8 +42,17 @@ screen -S name
 # resume named session
 screen -r name
 ```
- 
 
+##### Use a sub-shell to process separately different parts of the input
+
+```shell script
+# get the message from SQS, remove it using ReceiptHandle and show its body
+(MSG=$(aws sqs receive-message --queue-url $QUEUE_URL); \
+	[ ! -z "$MSG"  ] && echo "$MSG" | jq -r '.Messages[] | .ReceiptHandle' | \
+		(xargs -I {} aws sqs delete-message --queue-url $QUEUE_URL --receipt-handle {}) && \
+	echo "$MSG" | jq -r '.Messages[] | .Body')
+```
+ 
 
 
 ### Strings
