@@ -27,6 +27,22 @@ kubectl get pods -n NAMESPACE -o jsonpath="{..image}" | tr -s '[[:space:]]' '\n'
 kubectl get pods -n NAMESPACE -o=jsonpath='{range .items[*]}{"\n"}{.metadata.name}{":\t"}{range .spec.containers[*]}{.image}{", "}{end}{end}' | sort
 ```
 
+##### List deployments in namespace with filters
+
+```shell script
+# view list
+IFSB=$IFS; IFS=; for line in $(kubectl get deploy | grep -E 'NAME|<YOUR_DEPLOY_NAME_PATTERN>'); do echo $line; done; IFS=$IFSB
+ 
+# view list with custom namespace
+IFSB=$IFS; IFS=; NS='<YOUR_NAMESPACE>'; for line in $(kubectl get deploy -n $NS | grep -E 'NAME|<YOUR_DEPLOY_NAME_PATTERN>'); do echo $line; done; IFS=$IFSB
+  
+# scale list of deployments
+for name in $(kubectl get deploy -o name | grep -E 'NAME|<YOUR_DEPLOY_NAME_PATTERN>'); do kubectl scale --current-replicas=<TO_REPLACE> --replicas=<TO_REPLACE> $name; done
+
+# scale list of deployments with custom namespace
+NS='<YOUR_NAMESPACE>'; for name in $(kubectl get deploy -n $NS -o name | grep -E 'NAME|<YOUR_DEPLOY_NAME_PATTERN>'); do kubectl scale --current-replicas=<TO_REPLACE> --replicas=<TO_REPLACE> $name -n $NS; done
+```
+
 ##### Run command at the first found pod container filtered by selector
 
 ```shell script
