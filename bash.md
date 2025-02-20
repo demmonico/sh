@@ -493,6 +493,12 @@ Find all extensions recursively in the path
 find . -type f -exec sh -c 'echo $1 | sed "s/^.*\.//"' sh {} \; | sort | uniq
 ```
 
+Remove hidden files `DS_Store`, auto-created by MacOS
+
+```shell script
+find . -type f -name '\.DS_Store' -exec rm -f {} \;
+```
+
 Find hidden files, auto-created by MacOS for media
 
 ```shell script
@@ -507,6 +513,7 @@ Remove hidden files, auto-created by MacOS for media
 ```shell script
 find . -type f -name '\._*' -exec rm -f {} \;
 ```
+
 
 ##### Pack / Unpack
 
