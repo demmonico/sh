@@ -34,3 +34,11 @@ dfimage -sV=1.36 docker.elastic.co/beats/filebeat:7.5.1
 ```shell script
 TIMEFORMAT='%R sec'; time { docker build --target prod -f docker/php-fpm/Dockerfile -t testsize-php-0:prod . > /dev/null ; }
 ```
+
+##### Prune unused images via containerd
+
+```shell script
+crictl rmi --prune
+#
+df -h | grep '^/dev/' && crictl rmi --prune && df -h | grep '^/dev/'
+```
