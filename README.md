@@ -21,6 +21,8 @@ Collection of bash / sh / cli snippets, commands and tools
 
 [Bash profile scripts](bash_profile/README.md)
 
+[Git commands](git.md)
+
 [Docker commands](docker.md)
 
 [Kubernetes commands](k8s.md#k8s)
