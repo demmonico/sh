@@ -35,7 +35,21 @@ dfimage -sV=1.36 docker.elastic.co/beats/filebeat:7.5.1
 TIMEFORMAT='%R sec'; time { docker build --target prod -f docker/php-fpm/Dockerfile -t testsize-php-0:prod . > /dev/null ; }
 ```
 
-##### Prune unused images via containerd
+##### Prune unused images via contained
+
+Using `docker`
+
+```shell script
+# for removing dangling and ununsed images ('unused' means "images not referenced by any container")
+docker image prune -a
+# will delete all dangling data (containers, networks, and images). Using -a option will delete all unused images (not just dangling)
+docker system prune --all
+#
+df -h | grep '^/dev/' && docker image prune -a && df -h | grep '^/dev/'
+```
+
+
+Using `containerd`
 
 ```shell script
 crictl rmi --prune
