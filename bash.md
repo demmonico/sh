@@ -514,6 +514,13 @@ Remove hidden files, auto-created by MacOS for media
 find . -type f -name '\._*' -exec rm -f {} \;
 ```
 
+##### Pull the recent Git repository updates across all sub-directories
+
+```shell script
+find _* -type d -maxdepth 1 -exec sh -c 'echo $1; cd $1; git rev-parse --is-inside-work-tree > /dev/null 2>&1 && git pull > /dev/null; cd ..' sh {} \;
+```
+
+
 
 ##### Pack / Unpack
 
