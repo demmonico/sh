@@ -6,7 +6,7 @@ Collection of bash / sh / cli snippets, commands and tools working with bash_pro
 
 ### Manage BASH profile
 
-Get user's profile folder
+Get the user's profile folder
 
 ```bash
 PROFILE_DIR="$( eval echo ~$USER )"
@@ -22,7 +22,7 @@ exec bash -l
 
 ### BASH profile helper
 
-Helper used to color terminal promt, put some info etc
+Helper used to colour the terminal prompt, put some info, etc
 
 ##### Usage
 
@@ -30,7 +30,7 @@ Helper used to color terminal promt, put some info etc
   ```bash
   curl -LJ -o ~/.bash_profile_helper.sh https://raw.githubusercontent.com/demmonico/bash-goodies/master/bash_profile/bash_profile_helper.sh
   ```
-  **Note** it recommended to use dot in the begin of file name to make it hidden
+  **Note** it is recommended to use a dot at the beginning of the file name to make it hidden
 - put [bash profile helper](bash_profile_helper.sh) near with your .bashrc or .bash_profile file
 - add to the last one following line: `source ~/.bash_profile_helper.sh`
 
@@ -80,13 +80,13 @@ curl -LJ -o ~/aliaser.sh https://raw.githubusercontent.com/demmonico/bash-goodie
 
 #### Self-register snippet
 
-Automaticly register aliases to bashrc / bash_profile.
+Automatically register aliases to bashrc / bash_profile.
 This snippet could be added to any script to add auto-register alias functionality.
 
 Steps:
 - add snippet to your bash file
 - run via `./script.sh -i` and fill required data
-- reload terminal session and enjoy new alias
+- reload the terminal session and enjoy the new alias
 
 <details><summary>Code</summary>
 <pre><code>
@@ -153,13 +153,22 @@ fi
 
 
 
-### Create function or caller
+### Create a function or caller
 
-Use function or caller to run some dynamic scripts with params having some logic inside.
+Use a function or a caller to run some dynamic scripts with params having some logic inside.
 Add follow to `bash_profile`
 
 ```bash
 callerName() {
 echo "$1" "$2"
 }
+```
+
+### Install autocompletion
+
+To install autocompletion permanently, you can add the following command to the `~/.bashrc` file.
+
+```bash
+echo "source <(argocd completion bash)" >> ~/.bashrc
+source ~/.bashrc
 ```
