@@ -361,6 +361,12 @@ done | column -t
 ... | grep --color -E '^|:pattern1|:pattern2'
 ```
 
+##### Check the Redis connection
+
+```shell script
+telnet "$(printenv | grep redis | awk -F "//" '{print $2}' | awk -F ":" '{print $1}')" "$(printenv | grep redis | awk -F "//" '{print $2}' | awk -F ":" '{print $2}')"
+```
+
 ##### Looking at the pts list
 
 ```shell script
